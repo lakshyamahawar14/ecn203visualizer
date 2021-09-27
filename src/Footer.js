@@ -4,7 +4,7 @@ export const Footer = () => {
     return (
         <React.Fragment>
             <footer>
-                Made With ❤ By Lakshya
+                Made With ❤ By <span id="redtext">Lakshya</span>
             </footer>
         </React.Fragment>
     );

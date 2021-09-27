@@ -24,6 +24,10 @@ header{
     user-select: none;
 }
 
+#redtext{
+    color: red;
+}
+
 footer{
     position: absolute;
     bottom: 0;
@@ -81,10 +85,10 @@ leftmenu ul li a{
     font-size: 1rem;
     color: black;
     cursor: pointer;
-    margin-left: 10px;
     transition: all 0.3s ease-in-out;
     font-weight: bold;
     padding: 10px 0px;
+    padding-left: 10px;
     user-select: none;
 }
 
@@ -111,10 +115,10 @@ main{
 
 heading{
     font-weight: bold;
-    position: absolute;
-    left: calc(50% - 55px);
-    padding: 10px 0px;
-    user-select: none;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    color: red;
 }
 
 form{
@@ -122,10 +126,9 @@ form{
     top: 40px;
     margin: 15px;
     display: flex;
+    font-weight: bold;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: start;
-    font-weight: bold;
 }
 
 input{

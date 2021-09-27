@@ -6,15 +6,15 @@ import { Footer } from './Footer.js';
 import { LeftMenu } from './LeftMenu.js';
 import { ShiftingForm } from './ShiftingForm.js';
 
-export function Visualizer(){
-    return(
+export function Visualizer() {
+    return (
         <React.Fragment>
-            <Header/>
-            <LeftMenu/>
-            <ShiftingForm/>
-            <Footer/>
+            <Header />
+            <LeftMenu />
+            <ShiftingForm />
+            <Footer />
         </React.Fragment>
     );
 };
 
-ReactDOM.render(<Visualizer/>, document.getElementById('root'));
+ReactDOM.render(<Visualizer />, document.getElementById('root'));
