@@ -4,7 +4,7 @@ export const ScalingForm = () => {
     return (
         <React.Fragment>
             <main>
-                <heading>Scaling</heading>
+                <heading>Time Scaling</heading>
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation

@@ -4,7 +4,7 @@ export const ReflectionForm = () => {
     return (
         <React.Fragment>
             <main>
-                <heading>Reflection</heading>
+                <heading>Time Reflection</heading>
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation

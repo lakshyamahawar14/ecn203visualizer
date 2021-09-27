@@ -4,7 +4,7 @@ export const AmplificationForm = () => {
     return (
         <React.Fragment>
             <main>
-                <heading>Amplification</heading>
+                <heading>Signal Amplification</heading>
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation

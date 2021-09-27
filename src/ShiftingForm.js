@@ -4,7 +4,7 @@ export const ShiftingForm = () => {
     return (
         <React.Fragment>
             <main>
-                <heading>Shifting</heading>
+                <heading>Time Shifting</heading>
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation
