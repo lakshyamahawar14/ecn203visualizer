@@ -2,14 +2,16 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 
 export const Input = () => {
+    const inputs = [-2, -1, 0, 1, 2]
+    const outputs = [4, 1, 0, 1, 4]
     const data = {
-        labels: [
-            'Jan', 'Feb', 'Mar', 'Apr', 'May'
-        ],
+        labels: inputs,
         datasets: [
             {
-                labels: "Sales for 2020 (M)",
-                data: [3, 2, 2, 1, 5]
+                label: 'x(t)',
+                data: outputs,
+                fill: false,
+                tension: '0.5'
             }
         ]
     }
@@ -20,7 +22,16 @@ export const Input = () => {
                     data={data}
                     options={{
                         maintainAspectRatio: false,
-                        borderColor: 'red'
+                        borderColor: 'red',
+                        indexAxis: 'x',
+                        scales: {
+                            x: {
+                                beginAtZero: true
+                            },
+                            y: {
+                                stacked: true
+                            }
+                        }
                     }}
                 />
             </div>
