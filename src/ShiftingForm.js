@@ -9,12 +9,13 @@ export const ShiftingForm = () => {
     
     const getFormData = (e) => {
         e.preventDefault();
-        const inputequation = document.getElementById('equation').value;
-        const shiftingfactor = document.getElementById('factor').value;
+        const inputequation = document.getElementById('shiftingequation').value;
+        const shiftingfactor = document.getElementById('shiftingfactor').value;
         if(!inputequation || !shiftingfactor){
             return alert('Please Fill Form');
         }
         var a=1, c=0;
+        var t;
         var checkt=false;
         var aftert=false;
         var minus=false;
@@ -54,19 +55,16 @@ export const ShiftingForm = () => {
         }
         const ineqn = (t) => {
             if(minus){
-                return a*t-c;
+                return a*(t+parseFloat(shiftingfactor))-c;
             }
-            return a*t+c;
+            return a*(t+parseFloat(shiftingfactor))+c;
         }
         var inputarr = [];
         var outputarr = [];
-        var t;
-        for(t = -4; t<= 4; t++){
-            inputarr.push(t-(parseInt(shiftingfactor)/a));
-            outputarr.push(ineqn(t+(parseInt(shiftingfactor)/a)));
+        for(t = -8; t<= 8; t++){
+            inputarr.push(t);
+            outputarr.push(ineqn(t));
         }
-        console.log(inputarr);
-        console.log(outputarr);
         setInput(inputarr);
         setOutput(outputarr);
         setIsForm(true);
@@ -79,13 +77,13 @@ export const ShiftingForm = () => {
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation
-                        <input type="text" id="equation" placeholder="e.g. 2*t" required />
+                        <input type="text" id="shiftingequation" placeholder="e.g. 2*t" required />
                     </label>
                     <label htmlFor="factor">
                         Enter Shifting Factor
-                        <input type="text" id="factor" placeholder="e.g. 3" required />
+                        <input type="text" id="shiftingfactor" placeholder="e.g. 3" required />
                     </label>
-                    <button id="btn" onClick={getFormData}>Visualize</button>
+                    <button className="btn" onClick={getFormData}>Visualize</button>
                 </form>
                 {isForm && <Input input={input} output={output}/>}
             </main>

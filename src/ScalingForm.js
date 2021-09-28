@@ -7,14 +7,15 @@ export const ScalingForm = () => {
     var [output, setOutput] = useState([]);
     var [isForm, setIsForm] = useState(false);
     
-    const getFormData = (e) => {
+    var getFormData = (e) => {
         e.preventDefault();
-        const inputequation = document.getElementById('equation').value;
-        const scalingfactor = document.getElementById('factor').value;
+        const inputequation = document.getElementById('scalingequation').value;
+        const scalingfactor = document.getElementById('scalingfactor').value;
         if(!inputequation || !scalingfactor){
             return alert('Please Fill Form');
         }
         var a=1, c=0;
+        var t;
         var checkt=false;
         var aftert=false;
         var minus=false;
@@ -27,18 +28,15 @@ export const ScalingForm = () => {
             else if(inputequation[i] === '+'){
                 aftert = true;
                 // console.log('+');
-                continue;
             }
             else if(inputequation[i] === '*'){
                 aftert = true;
                 // console.log('*');
-                continue;
             }
             else if(inputequation[i] === '-'){
                 aftert = true;
                 minus=true;
                 // console.log('-');
-                continue;
             }
             else if(aftert){
                 c = parseInt(inputequation[i]);
@@ -54,19 +52,16 @@ export const ScalingForm = () => {
         }
         const ineqn = (t) => {
             if(minus){
-                return a*t-c;
+                return a*(parseFloat(scalingfactor)*t)-c;
             }
-            return a*t+c;
+            return a*(parseFloat(scalingfactor)*t)+c;
         }
         var inputarr = [];
         var outputarr = [];
-        var t;
-        for(t = -4; t<= 4; t++){
-            inputarr.push(t*parseInt(scalingfactor));
+        for(t = -8; t<= 8; t++){
+            inputarr.push(t);
             outputarr.push(ineqn(t));
         }
-        console.log(inputarr);
-        console.log(outputarr);
         setInput(inputarr);
         setOutput(outputarr);
         setIsForm(true);
@@ -78,13 +73,13 @@ export const ScalingForm = () => {
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation
-                        <input type="text" id="equation" placeholder="e.g. 2*t" required />
+                        <input type="text" id="scalingequation" placeholder="e.g. 2*t" required />
                     </label>
                     <label htmlFor="factor">
                         Enter Scaling Factor
-                        <input type="text" id="factor" placeholder="e.g. 3" required />
+                        <input type="text" id="scalingfactor" placeholder="e.g. 3" required />
                     </label>
-                    <input type="submit" id="btn" value="Visualize" onClick={getFormData}/>
+                    <input type="submit" className="btn" value="Visualize" onClick={getFormData}/>
                 </form>
                 {isForm && <Input input={input} output={output}/>}
             </main>

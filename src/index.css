@@ -143,14 +143,14 @@ input, button{
     width: 100px;
 }
 
-#btn{
+.btn{
     margin-left: unset;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s ease-in-out;
 }
 
-#btn:hover{
+.btn:hover{
     color: red;
 }
 

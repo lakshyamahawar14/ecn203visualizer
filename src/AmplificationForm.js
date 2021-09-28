@@ -9,12 +9,13 @@ export const AmplificationForm = () => {
     
     const getFormData = (e) => {
         e.preventDefault();
-        const inputequation = document.getElementById('equation').value;
-        const amplificationfactor = document.getElementById('factor').value;
+        const inputequation = document.getElementById('amplificationequation').value;
+        const amplificationfactor = document.getElementById('amplificationfactor').value;
         if(!inputequation || !amplificationfactor){
             return alert('Please Fill Form');
         }
         var a=1, c=0;
+        var t;
         var checkt=false;
         var aftert=false;
         var minus=false;
@@ -54,20 +55,16 @@ export const AmplificationForm = () => {
         }
         const ineqn = (t) => {
             if(minus){
-                return a*t-c;
+                return parseFloat(amplificationfactor)*(a*(t)-c);
             }
-            return a*t+c;
+            return parseFloat(amplificationfactor)*(a*(t)+c);
         }
         var inputarr = [];
         var outputarr = [];
-        var t;
-        for(t = -4; t<= 4; t++){
+        for(t = -8; t<= 8; t++){
             inputarr.push(t);
-            outputarr.push(ineqn(t)*parseInt(amplificationfactor));
+            outputarr.push(ineqn(t));
         }
-        console.log("amplification factor is, ", amplificationfactor);
-        console.log(inputarr);
-        console.log(outputarr);
         setInput(inputarr);
         setOutput(outputarr);
         setIsForm(true);
@@ -79,13 +76,13 @@ export const AmplificationForm = () => {
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation
-                        <input type="text" id="equation" placeholder="e.g. 2*t" required />
+                        <input type="text" id="amplificationequation" placeholder="e.g. 2*t" required />
                     </label>
                     <label htmlFor="factor">
                         Enter Amplification Factor
-                        <input type="text" id="factor" placeholder="e.g. 3" required />
+                        <input type="text" id="amplificationfactor" placeholder="e.g. 3" required />
                     </label>
-                    <input type="submit" id="btn" value="Visualize" onClick={getFormData}/>
+                    <input type="submit" className="btn" value="Visualize" onClick={getFormData}/>
                 </form>
                 {isForm && <Input input={input} output={output}/>}
             </main>

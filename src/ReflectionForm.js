@@ -9,12 +9,13 @@ export const ReflectionForm = () => {
     
     const getFormData = (e) => {
         e.preventDefault();
-        const inputequation = document.getElementById('equation').value;
-        const reflectionfector = document.getElementById('factor').value;
+        const inputequation = document.getElementById('reflectionequation').value;
+        const reflectionfector = document.getElementById('reflectionfactor').value;
         if(!inputequation || !reflectionfector){
             return alert('Please Fill Form');
         }
         var a=1, c=0;
+        var t;
         var checkt=false;
         var aftert=false;
         var minus=false;
@@ -54,19 +55,16 @@ export const ReflectionForm = () => {
         }
         const ineqn = (t) => {
             if(minus){
-                return a*t-c;
+                return a*(parseFloat(reflectionfector)*t)-c;
             }
-            return a*t+c;
+            return a*(parseFloat(reflectionfector)*t)+c;
         }
         var inputarr = [];
         var outputarr = [];
-        var t;
-        for(t = -4; t<= 4; t++){
+        for(t = -8; t<= 8; t++){
             inputarr.push(t);
-            outputarr.push((-1)*ineqn(t));
+            outputarr.push(ineqn(t));
         }
-        console.log(inputarr);
-        console.log(outputarr);
         setInput(inputarr);
         setOutput(outputarr);
         setIsForm(true);
@@ -78,13 +76,13 @@ export const ReflectionForm = () => {
                 <form>
                     <label htmlFor="equation">
                         Enter Your Equation
-                        <input type="text" id="equation" placeholder="e.g. 2*t" required />
+                        <input type="text" id="reflectionequation" placeholder="e.g. 2*t" required />
                     </label>
                     <label htmlFor="factor">
                         Enter Reflection Factor
-                        <input type="text" id="factor" placeholder="e.g. 3" value="-1" />
+                        <input type="text" id="reflectionfactor" placeholder="e.g. 3" value="-1" />
                     </label>
-                    <input type="submit" id="btn" value="Visualize" onClick={getFormData}/>
+                    <input type="submit" className="btn" value="Visualize" onClick={getFormData}/>
                 </form>
                 {isForm && <Input input={input} output={output}/>}
             </main>
