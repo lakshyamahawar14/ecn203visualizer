@@ -1,8 +1,12 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { Input } from './Input.js'
+import { useState } from 'react';
 
 export const ShiftingForm = () => {
+    var [input, setInput] = useState([]);
+    var [output, setOutput] = useState([]);
+    var [isForm, setIsForm] = useState(false);
+    
     const getFormData = (e) => {
         e.preventDefault();
         const inputequation = document.getElementById('equation').value;
@@ -61,10 +65,11 @@ export const ShiftingForm = () => {
             inputarr.push(t);
             outputarr.push(ineqn(t));
         }
-        console.log(inputarr);
-        console.log(outputarr);
-        return {inputarr, outputarr};
+        setInput(inputarr);
+        setOutput(outputarr);
+        setIsForm(true);
     }
+
     return (
         <React.Fragment>
             <main>
@@ -80,7 +85,7 @@ export const ShiftingForm = () => {
                     </label>
                     <button id="btn" onClick={getFormData}>Visualize</button>
                 </form>
-                <Input inputs={[-2, -1, 0, 1, 2]} outputs={[2, 1, 0, 1, 2]}/>
+                {isForm && <Input input={input} output={output}/>}
             </main>
         </React.Fragment>
     );

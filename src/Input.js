@@ -2,8 +2,9 @@ import React from 'react'
 import { Line } from 'react-chartjs-2'
 
 export const Input = (props) => {
-    const {inputs, outputs} = props;
-    const data = {
+    var inputs = props.input;
+    var outputs = props.output;
+    var data = {
         labels: inputs,
         datasets: [
             {
