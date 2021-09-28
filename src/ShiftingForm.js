@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input } from './Input.js'
 
 export const ShiftingForm = () => {
     return (
@@ -16,6 +17,7 @@ export const ShiftingForm = () => {
                     </label>
                     <input type="submit" id="btn" value="Visualize" />
                 </form>
+                <Input/>
             </main>
         </React.Fragment>
     );

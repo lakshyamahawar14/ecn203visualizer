@@ -119,6 +119,7 @@ heading{
     justify-content: center;
     margin: 10px;
     color: red;
+    user-select: none;
 }
 
 form{
@@ -153,3 +154,10 @@ input{
     color: red;
 }
 
+.linechart{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 20px);
+    height: auto;
+}
