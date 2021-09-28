@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import { Input } from './Input.js'
 
@@ -7,53 +8,62 @@ export const ShiftingForm = () => {
         const inputequation = document.getElementById('equation').value;
         const shiftingfactor = document.getElementById('factor').value;
         if(!inputequation || !shiftingfactor){
-            return alert('Please Fill Form')
+            return alert('Please Fill Form');
         }
-        var a=1, t=5, c=0;
+        var a=1, c=0;
         var checkt=false;
         var aftert=false;
         var minus=false;
-        var i
+        var i;
         for(i=0; i<inputequation.length; i++){
-            if(inputequation[i] == 't'){
+            if(inputequation[i] === 't'){
                 checkt = true;
-                console.log('t');
+                // console.log('t');
             }
-            else if(inputequation[i] == '+'){
+            else if(inputequation[i] === '+'){
                 aftert = true;
-                console.log('+');
+                // console.log('+');
                 continue;
             }
-            else if(inputequation[i] == '*'){
+            else if(inputequation[i] === '*'){
                 aftert = true;
-                console.log('*');
+                // console.log('*');
                 continue;
             }
-            else if(inputequation[i] == '-'){
+            else if(inputequation[i] === '-'){
                 aftert = true;
                 minus=true;
-                console.log('-');
+                // console.log('-');
                 continue;
             }
             else if(aftert){
                 c = parseInt(inputequation[i]);
-                console.log(c);
+                // console.log(c);
             }
             else if(!aftert){
                 a = parseInt(inputequation[i]);
-                console.log(a);
+                // console.log(a);
             }
         }
         if(!checkt){
             return alert(`Please Keep Independent Variable as 't'`)
         }
-        var ineq
-        if(minus){
-            ineq = a*t-c;
+        const ineqn = (t) => {
+            if(minus){
+                return a*t-c;
+            }
+            return a*t+c;
         }
-        else{
-            ineq = a*t+c;
+        var inputarr = [];
+        var outputarr = [];
+        var t;
+        for(t = -4; t<= 4; t++){
+            inputarr.push(t);
+            outputarr.push(ineqn(t));
         }
+        console.log(inputarr);
+        console.log(outputarr);
+        return {inputarr, outputarr};
     }
     return (
         <React.Fragment>
@@ -70,7 +80,7 @@ export const ShiftingForm = () => {
                     </label>
                     <button id="btn" onClick={getFormData}>Visualize</button>
                 </form>
-                <Input/>
+                <Input inputs={[-2, -1, 0, 1, 2]} outputs={[2, 1, 0, 1, 2]}/>
             </main>
         </React.Fragment>
     );

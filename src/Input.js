@@ -1,9 +1,8 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
 
-export const Input = () => {
-    const inputs = [-2, -1, 0, 1, 2]
-    const outputs = [4, 1, 0, 1, 4]
+export const Input = (props) => {
+    const {inputs, outputs} = props;
     const data = {
         labels: inputs,
         datasets: [
@@ -11,7 +10,7 @@ export const Input = () => {
                 label: 'x(t)',
                 data: outputs,
                 fill: false,
-                tension: '0.5'
+                tension: '0.1'
             }
         ]
     }
