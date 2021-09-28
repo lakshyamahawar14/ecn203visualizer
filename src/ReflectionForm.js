@@ -3,6 +3,9 @@ import { Input } from './Input.js';
 import { useState } from 'react';
 
 export const ReflectionForm = () => {
+    var [previn, setPrevIn] = useState([]);
+    var [prevout, setPrevOut] = useState([]);
+
     var [input, setInput] = useState([]);
     var [output, setOutput] = useState([]);
     var [isForm, setIsForm] = useState(false);
@@ -53,6 +56,12 @@ export const ReflectionForm = () => {
         if(!checkt){
             return alert(`Please Keep Independent Variable as 't'`)
         }
+        var previnarr = [];
+        var prevoutarr = [];
+        for(t = -8; t<= 8; t++){
+            previnarr.push(t);
+            prevoutarr.push(a*(t)+c);
+        }
         const ineqn = (t) => {
             if(minus){
                 return a*(parseFloat(reflectionfector)*t)-c;
@@ -65,6 +74,8 @@ export const ReflectionForm = () => {
             inputarr.push(t);
             outputarr.push(ineqn(t));
         }
+        setPrevIn(previnarr);
+        setPrevOut(prevoutarr);
         setInput(inputarr);
         setOutput(outputarr);
         setIsForm(true);
@@ -84,6 +95,9 @@ export const ReflectionForm = () => {
                     </label>
                     <input type="submit" className="btn" value="Visualize" onClick={getFormData}/>
                 </form>
+                <div className="initial">
+                {isForm && <Input input={previn} output={prevout}/>}
+                </div>
                 {isForm && <Input input={input} output={output}/>}
             </main>
         </React.Fragment>
