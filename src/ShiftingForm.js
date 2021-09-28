@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from './Input.js'
+import { Input } from './Input.js';
 import { useState } from 'react';
 
 export const ShiftingForm = () => {
@@ -62,9 +62,11 @@ export const ShiftingForm = () => {
         var outputarr = [];
         var t;
         for(t = -4; t<= 4; t++){
-            inputarr.push(t);
-            outputarr.push(ineqn(t));
+            inputarr.push(t-(parseInt(shiftingfactor)/a));
+            outputarr.push(ineqn(t+(parseInt(shiftingfactor)/a)));
         }
+        console.log(inputarr);
+        console.log(outputarr);
         setInput(inputarr);
         setOutput(outputarr);
         setIsForm(true);
