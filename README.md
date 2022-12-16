@@ -1,1 +1,1 @@
-# Visualize the time operations of a signal
+## ECN203-Visualizer - Visualize the time operations on a signal by graphs
